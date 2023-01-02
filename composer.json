@@ -1,0 +1,8 @@
+{
+    "name":"matheusmrqs4/crud",
+    "autoload": {
+        "psr-4": {
+            "App\\":"app/"
+        }
+    }
+}
