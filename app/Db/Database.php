@@ -4,6 +4,7 @@ namespace App\Db;
 
 use PDO;
 use PDOException;
+use Dotenv\Dotenv;
 
 class Database
 {
@@ -16,7 +17,19 @@ class Database
 
     public function __construct()
     {
+        $this->loadEnvironmentVariables();
         $this->setConnection();
+    }
+
+    /**
+     * Método Responsável por carregar as variáveis de ambiente
+     *
+     * @return Dotenv
+     */
+    private function loadEnvironmentVariables()
+    {
+        $dotenv = Dotenv::createImmutable(__DIR__);
+        $dotenv->load();
     }
 
     /**
@@ -26,8 +39,14 @@ class Database
      */
     private function setConnection()
     {
+        $dbHost = $_ENV['DB_HOST'];
+        $dbName = $_ENV['DB_DATABASE'];
+        $dbUser = $_ENV['DB_USER'];
+        $dbPassword = $_ENV['DB_PASSWORD'];
+
         try {
-            $this->connection = new PDO('mysql:host=localhost;dbname=crud-php-pdo', 'root', '');
+            $dsn = "mysql:host=$dbHost;dbname=$dbName;charset=utf8mb4";
+            $this->connection = new PDO($dsn, $dbUser, $dbPassword);
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die('ERROR: ' . $e->getMessage());
