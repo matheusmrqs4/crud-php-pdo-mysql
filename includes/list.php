@@ -12,7 +12,6 @@ $result = '';
 foreach ($register as $reg) {
     $result .=
         '<tr>
-            <td>' . $reg['id'] . '</td>
             <td>' . $reg['descricao'] . '</td>
             <td>' . $reg['valor'] . '</td>
             <td>' . date('d/m/Y', strtotime($reg['data'])) . '</td>
@@ -37,7 +36,6 @@ foreach ($register as $reg) {
         <table class="table bg-light mt-3 rounded">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Descrição</th>
                     <th>Valor</th>
                     <th>Data de Vencimento</th>
@@ -52,7 +50,7 @@ foreach ($register as $reg) {
     </section>
 
     <section>
-        <a class="btn btn-primary" href="registration.php" role="button">Novo Cadastro</a>
+        <a class="btn btn-primary" href="registration.php" role="button"><strong>Novo Cadastro</strong></a>
     </section>
 
 </main>

@@ -80,10 +80,9 @@ class Database
    */
     public function insert($values)
     {
-
       //MONTA A QUERY
-        $query = 'INSERT INTO registros (descricao, valor, data, status) 
-                  VALUES (?,?,?,?)';
+        $query = 'INSERT INTO registros (descricao, valor, data, status, user_id) 
+                  VALUES (?,?,?,?,?)';
 
       //EXECUTA O INSERT (chamando o método execute, criado acima)
         $this->execute($query, array_values($values));
@@ -95,15 +94,17 @@ class Database
      *
      * @return PDOStatement
      */
-    public function select($where = null)
+    public function select($where = null, $userId = null)
     {
-        //DADOS DA QUERY
-        $where = strlen($where) ? ' WHERE ' . $where : '';
+        // DADOS DA QUERY
+        $whereClause = strlen($where) ? ' WHERE ' . $where : '';
+        $userClause = $userId ? ' AND user_id =' . $userId : '';
 
-        //MONTA A QUERY
-        $query = 'SELECT * FROM registros' . $where;
+    // MONTA A QUERY
+        $query = 'SELECT registros.* FROM registros JOIN `user` ON registros.user_id = `user`.id'
+        . $whereClause . $userClause;
 
-        //EXECUTA O SELECT (chamando o método execute, criado acima)
+    // EXECUTA O SELECT (chamando o método execute, criado acima)
         return $this->execute($query);
     }
 

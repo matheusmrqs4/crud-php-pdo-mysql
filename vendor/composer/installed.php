@@ -3,7 +3,7 @@
         'name' => 'matheusmrqs4/crud',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'e11be9185f120e65599149c3abc90d148c063d39',
+        'reference' => 'd261b23739e25321ac34d2facc58ea5846d90eab',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'matheusmrqs4/crud' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'e11be9185f120e65599149c3abc90d148c063d39',
+            'reference' => 'd261b23739e25321ac34d2facc58ea5846d90eab',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

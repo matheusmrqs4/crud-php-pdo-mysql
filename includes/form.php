@@ -14,18 +14,18 @@
     <form method="post">
 
         <div class="input-group mb-3 mt-3">
-            <span class="input-group-text">Descrição</span>
-                <input required  type="text" class="form-control" name="descricao" placeholder="Conta de Luz">
+            <label class="input-group-text">Descrição</label>
+                <input required  type="text" class="form-control" name="descricao" placeholder="Conta de Luz" value="<?=$obRegister->descricao?>">
         </div>
 
         <div class="input-group mb-3 mt-3">
-            <span class="input-group-text">Valor - R$</span>
-                <input required  type="number" class="form-control" name="valor" placeholder="100,90" step=".01">
+            <label class="input-group-text">Valor - R$</label>
+                <input required  type="number" class="form-control" name="valor" placeholder="100,90" step=".01" value="<?=$obRegister->valor?>">
         </div>
 
         <div class="input-group mb-3 mt-3">
-            <span class="input-group-text">Data de Vencimento</span>
-                <input required  type="date" class="form-control" name="data">
+            <label class="input-group-text">Data de Vencimento</label>
+                <input required  type="date" class="form-control" name="data" value="<?=$obRegister->data?>">
         </div>
 
         <div class="form-group">
@@ -34,13 +34,13 @@
             <div>
                 <div class="form-check form-check-inline">
                     <label class="form-control">
-                        <input type="radio" name="status" value="p"> Pago
+                        <input type="radio" name="status" value="p" checked> Pago
                     </label>
                 </div>
 
                 <div class="form-check form-check-inline">
                     <label class="form-control">
-                        <input type="radio" name="status" value="np"> Não Pago
+                        <input type="radio" name="status" value="np" <?=$obRegister->status == 'np' ? 'checked' : '' ?>> Não Pago
                     </label>
                 </div>
             </div>

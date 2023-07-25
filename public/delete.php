@@ -2,7 +2,7 @@
 
 use App\Entity\Register;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 // VALIDANDO O ID
 if (!isset($_GET['id']) or !is_numeric($_GET['id'])) {
@@ -28,6 +28,6 @@ if (isset($_POST['excluir'])) {
     exit;
 }
 
-include __DIR__ . '/includes/header.php';
-include __DIR__ . '/includes/confirm-delete.php';
-include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/confirm-delete.php';
+include __DIR__ . '/../includes/footer.php';

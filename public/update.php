@@ -2,7 +2,7 @@
 
 use App\Entity\Register;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 define('TITLE', 'Editar:');
 
@@ -35,6 +35,6 @@ if (isset($_POST['descricao'], $_POST['valor'], $_POST['data'], $_POST['status']
 }
 
 
-include __DIR__ . '/includes/header.php';
-include __DIR__ . '/includes/form.php';
-include __DIR__ . '/includes/footer.php';
+include __DIR__ . '/../includes/header.php';
+include __DIR__ . '/../includes/form.php';
+include __DIR__ . '/../includes/footer.php';

@@ -12,6 +12,11 @@ class Register
      */
     public $id;
 
+    /**
+     * Identificador do Usuário (FK)
+     * @var integer
+     */
+    public $userId;
 
     /**
      * Descrição do Cadastro
@@ -55,7 +60,8 @@ class Register
                 'descricao' => $this->descricao,
                 'valor' => $this->valor,
                 'data' => $this->data,
-                'status' => $this->status
+                'status' => $this->status,
+                'user_id' => $_SESSION['id']
         ]);
 
         //RETORNAR SUCESSO
@@ -69,7 +75,7 @@ class Register
      */
     public function update()
     {
-        return (new Database('registros'))->update('id=' . $this->id, [
+        return (new Database('registros'))->update('registros.id=' . $this->id, [
                 'descricao' => $this->descricao,
                 'valor' => $this->valor,
                 'data' => $this->data,
@@ -84,7 +90,7 @@ class Register
      */
     public function delete()
     {
-        return (new Database('registros'))->delete('id=' . $this->id);
+        return (new Database('registros'))->delete('registros.id=' . $this->id);
     }
 
     /**
@@ -93,9 +99,12 @@ class Register
      * @param  string $where
      * @return PDOStatement
      */
-    public static function getRegister($where = null)
+    public static function getRegister()
     {
-        return (new Database('registros'))->select($where)->fetchAll();
+        //OBTENDO O ID DO USUÁRIO LOGADO
+        $loggedUserId = $_SESSION['id'];
+
+        return (new Database('registros'))->select(null, $loggedUserId)->fetchAll();
     }
 
 
@@ -107,6 +116,6 @@ class Register
      */
     public static function getRegisterUpdate($id)
     {
-        return (new Database('registros'))->select('id=' . $id)->fetchObject(self::class);
+        return (new Database('registros'))->select('registros.id=' . $id)->fetchObject(self::class);
     }
 }
